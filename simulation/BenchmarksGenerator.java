@@ -156,6 +156,7 @@ public abstract class BenchmarksGenerator {
 				}
 			}
 			// generate Events
+			int count = 0;
 			for (Map.Entry<WirelessEvent, Integer> entry : this.wirelessEvents.entrySet()) {
 				for (int i=0; i<entry.getValue(); i++) {
 					@SuppressWarnings("rawtypes")
@@ -169,7 +170,8 @@ public abstract class BenchmarksGenerator {
 					//e.numberOfSensorProcessedEvents += i*1000;
 					//System.out.println(i);
 					Location l = new Location(e,"_location");
-					l.setLocation(new double[]{((this.scenarioDimensionXY[0])/2),((this.scenarioDimensionXY[1])/2)});
+					l.setLocation(new double[]{(this.gridPositions[count][0]), (this.gridPositions[count][1])});
+					count++;
 					Node fragmentNode = dBuilder.parse(new ByteArrayInputStream(e.exportMoMLPlain().getBytes())).getDocumentElement();
 					fragmentNode = doc.importNode(fragmentNode, true);
 					doc.getDocumentElement().appendChild(fragmentNode);
