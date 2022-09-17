@@ -57,7 +57,7 @@ public abstract class BasicEvent extends TypedAtomicActor {
         color = new StringParameter(this, "Color");
         color.setExpression("{0.0, 0.0, 0.9, 1.0}");
         triggerTime = new Parameter(this, "TriggerTime"); 
-        triggerTime.setExpression("0");// default event start at 0
+        triggerTime.setExpression("25200");// Aqui foi setado para primeira leitura ser feita às 7 horas da manhã
         // Define event node's wireless ports.
         out = new WirelessIOPort(this, "output", false, true);
         out.outsideChannel.setExpression("$SensorChannelName"); //"$SensorChannelName"
